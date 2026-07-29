@@ -73,3 +73,97 @@
 #include <cmath>
 using namespace std;
 
+void addition(double a, double b) {
+    cout << fixed << setprecision(2) << "Result: " << a << " + " << b << " = " << (a + b) << endl;
+}
+
+void subtraction(double a, double b) {
+    cout << fixed << setprecision(2) << "Result: " << a << " - " << b << " = " << (a - b) << endl;
+}
+
+void multiplication(double a, double b) {
+    cout << fixed << setprecision(2) << "Result: " << a << " * " << b << " = " << (a * b) << endl;
+}
+
+void division(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+        return;
+    }
+
+    cout << fixed << setprecision(2) << "Result: " << a << " / " << b << " = " << (a / b) << endl;
+}
+
+void modulus(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+        return;
+    }
+
+    int first = static_cast<int>(a);
+    int second = static_cast<int>(b);
+    cout << "Result: " << first << " % " << second << " = " << (first % second) << endl;
+}
+
+void exponentiation(double a, double b) {
+    if (b < 0) {
+        cout << "Error: Exponent must be non-negative." << endl;
+        return;
+    }
+
+    double result = 1.0;
+    int exponent = static_cast<int>(b);
+    for (int i = 0; i < exponent; ++i) {
+        result *= a;
+    }
+
+    cout << fixed << setprecision(2) << "Result: " << a << " ^ " << b << " = " << result << endl;
+}
+
+int main() {
+    int choice;
+
+    do {
+        cout << "\n============================" << endl;
+        cout << "SIMPLE CALCULATOR" << endl;
+        cout << "============================" << endl;
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Modulus" << endl;
+        cout << "6. Exponentiation" << endl;
+        cout << "7. Quit" << endl;
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice >= 1 && choice <= 6) {
+            double first, second;
+            cout << "Enter first number: ";
+            cin >> first;
+            cout << "Enter second number: ";
+            cin >> second;
+
+            if (choice == 1) {
+                addition(first, second);
+            } else if (choice == 2) {
+                subtraction(first, second);
+            } else if (choice == 3) {
+                multiplication(first, second);
+            } else if (choice == 4) {
+                division(first, second);
+            } else if (choice == 5) {
+                modulus(first, second);
+            } else if (choice == 6) {
+                exponentiation(first, second);
+            }
+        } else if (choice == 7) {
+            cout << "Goodbye!" << endl;
+        } else {
+            cout << "Error: Invalid choice." << endl;
+        }
+    } while (choice != 7);
+
+    return 0;
+}
+
